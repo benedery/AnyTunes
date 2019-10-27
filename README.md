@@ -43,6 +43,19 @@ i made a special command.
 npm start
 ```
 
+REACT APP WILL BE RUNNING ON PORT 3000(as default)
+
+```
+http://localhost:3000/
+http://10.0.0.1:3000/
+```
+
+NODE WILL BE RUNNING ON PORT 4005
+
+```
+http://localhost:4005/
+```
+
 ### FLOW
 
 After you logged in/register,

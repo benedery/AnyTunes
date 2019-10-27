@@ -1,9 +1,0 @@
-1.upload both sections to the air, uploading to github in diffrent repo is better i think. - live working.
-7.spinner
-8.stop fetching in actions&reducers
-
-use effect in register and login componnent to clean errors.
-each child unique key prop in list
-
-bonus
-1.testing(intergration & unit).
