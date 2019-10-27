@@ -12,8 +12,8 @@ const Header = ({ isLoggedIn, handleLogout, admin }) => {
         if (admin) {
             return (
                 <React.Fragment>
-                    <Typography variant="h6" className="subheader__title">
-                        <NavLink to="/admin" style={{ textDecoration: "none" }} activeClassName="selected" >
+                    <Typography >
+                        <NavLink to="/admin" className="subheader__title" style={{ textDecoration: "none" }} activeClassName="selected" >
                             User Managment
                         </NavLink>
                     </Typography>
@@ -51,8 +51,8 @@ const Header = ({ isLoggedIn, handleLogout, admin }) => {
                         {isLoggedIn &&
                             <React.Fragment>
                                 {adminPanel()}
-                                <Typography variant="h6" className="subheader__title">
-                                    <NavLink to="/topten" style={{ textDecoration: "none", fontWeight: "bold" }} activeClassName="selected" >
+                                <Typography>
+                                    <NavLink to="/topten" className="subheader__title" style={{ textDecoration: "none", fontWeight: "bold" }} activeClassName="selected" >
                                         TOP 10
                                                           </NavLink>
                                 </Typography>
