@@ -7,9 +7,8 @@ registration and auth.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the pro# Project Title
+These instructions will get you a copy of the project up and running on your local machine.
 
-One Paragraph of project description goes here
 
 ### Prerequisites
 
