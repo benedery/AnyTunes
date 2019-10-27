@@ -1,0 +1,23 @@
+.fullitem-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+.fullitem-details-info-right {
+    margin-top: 30px;
+}
+
+.fullitem-details-info-left {
+    text-align: left;
+    max-width: 520px;
+    align-content: center;
+    white-space: normal;
+    margin-right: 15px;
+}
+
+.fullitem-preview {
+    display: flex;
+    justify-content: center;
+}

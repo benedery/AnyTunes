@@ -1,0 +1,33 @@
+.header__root {
+    background: linear-gradient(-30deg, #d754ad 0%, #d754ad 10%, #f96785 62%, #fe7333 100%);
+}
+
+#header__submenu {
+    display: flex;
+    flex-direction: row;
+}
+
+.header__title {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.header_toolbar {
+    display: flex;
+    justify-content: center;
+}
+
+.MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subheader__title {
+    padding-left: 15px;
+    cursor: pointer;
+}
+
+.selected {
+    color: white;
+}

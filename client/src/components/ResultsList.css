@@ -1,0 +1,7 @@
+.resultsList__container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 10px 120px;
+}
