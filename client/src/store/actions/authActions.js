@@ -15,7 +15,6 @@ export const registerUser = (newUser) => {
         }).then(res => res.json())
             .then(res => {
                 if (res.status === "success") {
-                    console.log(res.data)
                     dispatch({
                         type: REGISTER_SUCCESS, payload: {
                             token: res.token,
@@ -45,7 +44,6 @@ export const authUser = (userDetails) => {
         }).then(res => res.json())
             .then(res => {
                 if (res.status === 'success') {
-                    console.log(res.data)
                     dispatch({
                         type: LOGIN_SUCCESS, payload: {
                             token: res.token,
