@@ -16,7 +16,12 @@
     padding: .175rem .25rem;
     font-size: 1rem;
     line-height: 1.2;
-    letter-spacing: ;
     border-radius: .25rem;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.link-username {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
 }

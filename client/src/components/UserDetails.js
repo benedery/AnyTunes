@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,9 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { connect } from "react-redux";
-import './AdminPanel.css'
-import { getUserData } from '../store/actions/dataActions';
-import { Button } from '@material-ui/core';
+import './UserDetails.css'
+import { getUserData, deleteUser } from '../store/actions/dataActions';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,15 +35,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const UserDetails = ({ user, getData, match, isAdmin, querisCount }) => {
+const UserDetails = ({ user, getData, match, isLoading, querisCount }) => {
+    const classes = useStyles();
     console.log(querisCount)
 
-    useEffect(() => {
-        getData(match.params.user)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const classes = useStyles();
+    if (isLoading) return <CircularProgress className="loading-circle" />
     return (
         <Paper className={classes.root}>
             <Table className={classes.table}>
@@ -83,10 +78,11 @@ const UserDetails = ({ user, getData, match, isAdmin, querisCount }) => {
                     ))}
                     <TableRow >
                         <TableCell component="th" scope="row">
-                            <Button className="btn-delete">DELETE USER</Button>
+                            <button className="btn-delete"
+                            >DELETE USER</button>
                         </TableCell>
                         <TableCell align="right">
-                            <Button className="btn-reset">RESET QUERIES</Button></TableCell>
+                            <button className="btn-reset">RESET QUERIES</button></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
@@ -96,17 +92,19 @@ const UserDetails = ({ user, getData, match, isAdmin, querisCount }) => {
 
 const mapStateToProps = (state) => {
     return {
+        isLoading: state.data.isFetching,
         user: state.data.uniqueUserData[0],
-        isAdmin: state.data.uniqueUserData[0].isAdmin,
         querisCount: state.data.uniqueUserData[0].queries.reduce((acc, curr) => {
             return acc + curr.timeSearched
-        }, 0)
+        }, 0),
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getData: (id) => dispatch(getUserData(id))
+        // handleDelete: (id) => dispatch(deleteUser(id))
     }
 }
 

@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import history from '../../history/history'
-import { FINISH_LOADING, CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, SET_USERS, GET_ERROR, SET_USER } from './types'
+import { FINISH_LOADING, CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, SET_USERS, GET_ERROR, SET_USER, FETCHING_FINISH } from './types'
 
 export const updateQuery = (dispatch, getState, SearchTerm) => {
     const searchTermLowercase = SearchTerm.toLowerCase()
@@ -88,6 +88,7 @@ export const deleteUser = (id) => {
 
 export const getUserData = (id) => {
     return (dispatch, getState) => {
+        dispatch({ type: FETCHING_STARTED })
         const token = getState().auth.token
         const config = {
             headers: {
@@ -101,6 +102,7 @@ export const getUserData = (id) => {
                 if (res.status === 200) {
                     console.log(res)
                     dispatch({ type: SET_USER, payload: res.data })
+                    dispatch({ type: FETCHING_FINISH })
                 }
             })
             .catch(err => dispatch({ type: GET_ERROR, payload: err }))

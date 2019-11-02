@@ -1,4 +1,4 @@
-import { CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, LOGOUT_SUCCESS, SET_USERS, SET_USER } from "../actions/types";
+import { CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, LOGOUT_SUCCESS, SET_USERS, SET_USER, FETCHING_FINISH } from "../actions/types";
 
 export const dataInitState = {
     isFetching: false,
@@ -14,6 +14,11 @@ export const dataReducer = (state = dataInitState, action) => {
             return {
                 ...state,
                 isFetching: true
+            };
+        case FETCHING_FINISH:
+            return {
+                ...state,
+                isFetching: false,
             };
         case CHANGE_SEARCH_INPUT:
             return {

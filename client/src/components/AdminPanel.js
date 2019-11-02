@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { fetchUsers, deleteUser } from '../store/actions/dataActions'
+import { fetchUsers, deleteUser, getUserData } from '../store/actions/dataActions'
 import { connect } from "react-redux";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Link } from "react-router-dom";
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const AdminPanel = ({ fetchAllUsers, rows, handleDelete }) => {
+const AdminPanel = ({ fetchAllUsers, rows, handleDelete, getData }) => {
 
     useEffect(() => {
         fetchAllUsers();
@@ -58,7 +58,7 @@ const AdminPanel = ({ fetchAllUsers, rows, handleDelete }) => {
                     {rows.map(row => (
                         <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
-                                <Link to={`admin/${row._id}`}>{row.username} </Link>
+                                <Link to={`admin/${row._id}`} onClick={() => getData(row._id)} className="link-username">{row.username} </Link>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleDelete(row._id)}><button className="delete-btn"><DeleteForeverIcon></DeleteForeverIcon></button></TableCell>
                         </TableRow>
@@ -77,7 +77,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchAllUsers: () => dispatch(fetchUsers()),
-        handleDelete: (id) => dispatch(deleteUser(id))
+        handleDelete: (id) => dispatch(deleteUser(id)),
+        getData: (id) => dispatch(getUserData(id))
     }
 }
 
