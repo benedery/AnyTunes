@@ -9,6 +9,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import TopTen from './components/TopTen';
 import AdminPanel from './components/AdminPanel';
+import UserDetails from './components/UserDetails';
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
       <Route path="/register" component={Register} exact />
       <Route path="/topten" component={TopTen} exact />
       <Route path="/admin" component={AdminPanel} exact />
+      <Route path="/admin/:user" component={UserDetails} exact />
     </div>
   );
 };

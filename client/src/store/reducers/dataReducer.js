@@ -1,10 +1,11 @@
-import { CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, LOGOUT_SUCCESS, SET_USERS } from "../actions/types";
+import { CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, LOGOUT_SUCCESS, SET_USERS, SET_USER } from "../actions/types";
 
 export const dataInitState = {
     isFetching: false,
     resultsData: [],
     usersData: [],
     searchTerm: null,
+    uniqueUserData: []
 };
 
 export const dataReducer = (state = dataInitState, action) => {
@@ -35,11 +36,19 @@ export const dataReducer = (state = dataInitState, action) => {
                 searchTerm: null,
                 isFetching: false,
                 resultsData: [],
+                uniqueUserData: [],
+                usersData: [],
             }
         case SET_USERS: {
             return {
                 ...state,
                 usersData: action.payload
+            }
+        }
+        case SET_USER: {
+            return {
+                ...state,
+                uniqueUserData: action.payload
             }
         }
         default:

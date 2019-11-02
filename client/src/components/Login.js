@@ -73,7 +73,7 @@ const Login = ({ handleUser, error }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                {error && <p>{error}</p>}
+                {error && <p>{error.msg}</p>}
                 <Button
                     type="submit"
                     fullWidth

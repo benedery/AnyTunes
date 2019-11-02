@@ -14,5 +14,6 @@ export const CHANGE_SEARCH_INPUT = "CHANGE_SEARCH_INPUT";
 export const UPDATE_RESULTS_DATA = "UPDATE_RESULTS_DATA";
 export const CLEAR_SEARCH_TERM = "CLEAR_SEARCH_TERM";
 export const SET_USERS = "SET_USERS";
+export const SET_USER = "SET_USER";
 
 
