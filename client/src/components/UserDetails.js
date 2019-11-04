@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { connect } from "react-redux";
 import './UserDetails.css'
-import { getUserData, deleteUser } from '../store/actions/dataActions';
+import { getUserData, deleteUser, resetUserQueries } from '../store/actions/dataActions';
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 const useStyles = makeStyles(theme => ({
@@ -35,10 +35,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const UserDetails = ({ user, getData, match, isLoading, querisCount }) => {
+const UserDetails = ({ user, getData, match, isLoading, querisCount, resetQueries, handleDelete }) => {
     const classes = useStyles();
-    console.log(querisCount)
-
     if (isLoading) return <CircularProgress className="loading-circle" />
     return (
         <Paper className={classes.root}>
@@ -79,10 +77,10 @@ const UserDetails = ({ user, getData, match, isLoading, querisCount }) => {
                     <TableRow >
                         <TableCell component="th" scope="row">
                             <button className="btn-delete"
-                            >DELETE USER</button>
+                                onClick={() => handleDelete(user._id)}>DELETE USER</button>
                         </TableCell>
                         <TableCell align="right">
-                            <button className="btn-reset">RESET QUERIES</button></TableCell>
+                            <button className="btn-reset" onClick={() => resetQueries(user._id)}>RESET QUERIES</button></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
@@ -93,8 +91,8 @@ const UserDetails = ({ user, getData, match, isLoading, querisCount }) => {
 const mapStateToProps = (state) => {
     return {
         isLoading: state.data.isFetching,
-        user: state.data.uniqueUserData[0],
-        querisCount: state.data.uniqueUserData[0].queries.reduce((acc, curr) => {
+        user: state.data.uniqueUserData,
+        querisCount: state.data.uniqueUserData.queries.reduce((acc, curr) => {
             return acc + curr.timeSearched
         }, 0),
 
@@ -103,8 +101,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getData: (id) => dispatch(getUserData(id))
-        // handleDelete: (id) => dispatch(deleteUser(id))
+        getData: (id) => dispatch(getUserData(id)),
+        resetQueries: (id) => dispatch(resetUserQueries(id)),
+        handleDelete: (id) => dispatch(deleteUser(id))
     }
 }
 

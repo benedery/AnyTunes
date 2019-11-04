@@ -50,7 +50,7 @@ const FullResultItem = ({ match, goBack }) => {
                 </div>
             </div>
             <div className="fullitem-preview">
-                <ReactPlayer url={trackData.previewUrl} playing controls={true} />
+                <ReactPlayer url={trackData.previewUrl} playing controls={true} width={350} height={100} />
             </div>
         </div>
     );

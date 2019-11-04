@@ -61,4 +61,14 @@ export const dataReducer = (state = dataInitState, action) => {
     }
 };
 
+
+
+// export const getQueriesCount = (state) => {
+//     if (state.uniqueUserData[0].queries)
+//         state.data.uniqueUserData[0].queries.reduce((acc, curr) => {
+//             return acc + curr.timeSearched
+//         }, 0)
+//     else return 0
+// }
+
 export default dataReducer;
