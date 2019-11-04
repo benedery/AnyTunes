@@ -58,7 +58,8 @@ const AdminPanel = ({ fetchAllUsers, rows, handleDelete, getData }) => {
                     {rows.map(row => (
                         <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
-                                <Link to={`admin/${row._id}`} onClick={() => getData(row._id)} className="link-username">{row.username} </Link>
+                                {/* <Link to={`admin/${row._id}`} onClick={() => getData(row._id)} className="link-username">{row.username} </Link> */}
+                                <a onClick={() => getData(row._id)} className="link-username">{row.username} </a>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleDelete(row._id)}><button className="delete-btn"><DeleteForeverIcon></DeleteForeverIcon></button></TableCell>
                         </TableRow>

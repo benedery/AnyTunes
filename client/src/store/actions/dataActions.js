@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import history from '../../history/history'
+import { Link } from "react-router-dom";
 import { FINISH_LOADING, CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, SET_USERS, GET_ERROR, SET_USER, FETCHING_FINISH } from './types'
 
 export const updateQuery = (dispatch, getState, SearchTerm) => {
@@ -58,7 +59,7 @@ export const fetchUsers = () => {
         }
         if (token) { config.headers['x-auth-token'] = token; }
 
-        Axios.get('http://localhost:4005/users/allusers', config)
+        return Axios.get('http://localhost:4005/users/allusers', config)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res)
@@ -99,12 +100,12 @@ export const getUserData = (id) => {
         }
         if (token) { config.headers['x-auth-token'] = token; }
 
-        Axios.get(`http://localhost:4005/users/data/${id}`, config)
+        return Axios.get(`http://localhost:4005/users/data/${id}`, config)
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res)
                     dispatch({ type: SET_USER, payload: res.data })
                     dispatch({ type: FETCHING_FINISH })
+                    history.push(`admin/${id}`)
                 }
             })
             .catch(err => dispatch({ type: GET_ERROR, payload: err }))
@@ -122,7 +123,7 @@ export const resetUserQueries = (id) => {
         }
         if (token) { config.headers['x-auth-token'] = token; }
 
-        Axios.get(`http://localhost:4005/query/reset/${id}`, config)
+        return Axios.get(`http://localhost:4005/query/reset/${id}`, config)
             .then(res => {
                 if (res.status === 200) {
                     console.log(res)

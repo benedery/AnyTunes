@@ -5,7 +5,7 @@ export const dataInitState = {
     resultsData: [],
     usersData: [],
     searchTerm: null,
-    uniqueUserData: []
+    uniqueUserData: [{ queries: [1] }]
 };
 
 export const dataReducer = (state = dataInitState, action) => {
@@ -41,7 +41,7 @@ export const dataReducer = (state = dataInitState, action) => {
                 searchTerm: null,
                 isFetching: false,
                 resultsData: [],
-                uniqueUserData: [],
+                uniqueUserData: [{ queries: [1] }],
                 usersData: [],
             }
         case SET_USERS: {
