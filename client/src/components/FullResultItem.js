@@ -71,11 +71,12 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                     <div className="fullitem-details-info-right">
                         <img src={trackData.artworkUrl100} alt="img-poster" />
                         <div className="fullitem-details-artist-right">{trackData.artistName}</div>
+                        <div className="fullitem-preview">
+                            <ReactPlayer url={trackData.previewUrl} playing controls={true} width={130} height={50} />
+                        </div>
                     </div>
                 </div>
-                <div className="fullitem-preview">
-                    <ReactPlayer url={trackData.previewUrl} playing controls={true} width={350} height={100} />
-                </div>
+
             </div>
             <div className="downloads-container">
                 <button onClick={() => handleDownload(trackData.previewUrl)} className="btn-download">
