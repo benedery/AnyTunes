@@ -91,7 +91,20 @@ exports.get_allusers = (req, res) => {
         }
         else res.status(401).json({ msg: "You are not an admin user" })
     })
+}
 
+exports.get_individualdata = (req, res) => {
+    User.findOne({ _id: req.user.id }, (err, user) => {
+        if (user.isAdmin) {
+            User.findOne({ _id: req.params.id })
+                .select('-password')
+                .then(users => {
+                    console.log(users)
+                    res.json(users)
+                });
+        }
+        else res.status(401).json({ msg: "You are not an admin user" })
+    })
 }
 
 exports.delete_user = (req, res) => {

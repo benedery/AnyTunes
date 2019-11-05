@@ -5,4 +5,6 @@ const queryController = require('../controllers/query.controller')
 
 router.get('/', authMiddleware, queryController.get_queries)
 router.post('/', authMiddleware, queryController.post_query)
+router.get('/reset/:id', authMiddleware, queryController.reset_queries)
+
 module.exports = router
