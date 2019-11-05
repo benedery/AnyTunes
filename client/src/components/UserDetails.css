@@ -1,0 +1,49 @@
+.btn-delete {
+    cursor: pointer;
+    color: #fff;
+    background-color: #D955AC;
+    border-color: #D955AC;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .175rem .925rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    border-radius: .25rem;
+    font-weight: bold;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-reset {
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(218, 117, 3);
+    border-color: #D955AC;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .175rem .925rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    border-radius: .25rem;
+    font-weight: bold;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.MuiCircularProgress-root {
+    margin-top: 100px;
+}

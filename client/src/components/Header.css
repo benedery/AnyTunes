@@ -29,9 +29,12 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
+    transition: all .4s ease-in-out;
 }
 
-/*noinspection ALL*/
+.subheader__title:hover {
+    color: rgb(68, 68, 68);
+}
 
 .selected {
     color: white;

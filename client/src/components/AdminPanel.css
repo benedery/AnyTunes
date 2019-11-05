@@ -1,0 +1,41 @@
+.delete-btn {
+    cursor: pointer;
+    color: #fff;
+    background-color: #D955AC;
+    border-color: #D955AC;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .175rem .25rem;
+    font-size: 1rem;
+    line-height: 1.2;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.link-username {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+    background-size: cover;
+    color: transparent;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    text-transform: uppercase;
+    margin: 10px 0;
+}
+
+.link-username:hover {
+    color: palevioletred;
+    transform: scale(1.5);
+}
