@@ -11,7 +11,7 @@ const ResultItem = ({
     item
 }) => {
     return (
-        <Card className="resultItem-card" key={item.trackId}>
+        <Card id="item-card" className="resultItem-card" key={item.trackId}>
             <CardActionArea>
                 <Link to={`itunes/${item.trackId}`} style={{ textDecoration: "none" }}>
                     {item.artworkUrl100 === "N/A" ? null : (
@@ -21,8 +21,8 @@ const ResultItem = ({
                     )}
                 </Link>
                 <CardContent>
-                    <Typography color="textSecondary">{item.artistName}</Typography>
-                    <Typography>{item.trackName}</Typography>
+                    <p className="resultitem-artist-text">{item.artistName}</p>
+                    <p className="resultitem-track-text">{item.trackName}</p>
                 </CardContent>
             </CardActionArea>
         </Card>

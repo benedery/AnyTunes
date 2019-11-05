@@ -51,12 +51,12 @@ const Header = ({ isLoggedIn, handleLogout, admin }) => {
                         {isLoggedIn &&
                             <React.Fragment>
                                 {adminPanel()}
-                                <Typography>
+                                <Typography >
                                     <NavLink to="/topten" className="subheader__title" style={{ textDecoration: "none", fontWeight: "bold" }} activeClassName="selected" >
                                         TOP 10
                                                           </NavLink>
                                 </Typography>
-                                <Typography variant="h6" className="subheader__title">
+                                <Typography className="subheader__title">
                                     <NavLink to="/" style={{ textDecoration: "none" }} activeClassName="selected" onClick={handleLogout}>
                                         Logout
                                                           </NavLink>

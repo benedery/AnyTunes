@@ -1,6 +1,5 @@
 import Axios from 'axios'
 import history from '../../history/history'
-import { Link } from "react-router-dom";
 import { FINISH_LOADING, CHANGE_SEARCH_INPUT, FETCHING_STARTED, UPDATE_RESULTS_DATA, CLEAR_SEARCH_TERM, SET_USERS, GET_ERROR, SET_USER, FETCHING_FINISH } from './types'
 
 export const updateQuery = (dispatch, getState, SearchTerm) => {

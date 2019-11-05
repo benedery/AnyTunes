@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import { goBackFromItem } from '../store/actions/dataActions'
 import ResultItem from "./ResultItem";
 import Axios from "axios";
-const FileDownload = require('js-file-download');
-
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -63,7 +61,7 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                 </IconButton>
                 <div className="fullitem-details-container">
                     <div className="fullitem-details-info-left">
-                        <h1>{trackData.trackName}</h1>
+                        <h1 style={{ fontWeight: "800" }}>{trackData.trackName}</h1>
                         <h3> {trackData.artistName}</h3>
                         <p>Release Date : {trackData.releaseDate}</p>
                         <p>Genre : {trackData.primaryGenreName}</p>
@@ -72,6 +70,7 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                     </div>
                     <div className="fullitem-details-info-right">
                         <img src={trackData.artworkUrl100} alt="img-poster" />
+                        <div className="fullitem-details-artist-right">{trackData.artistName}</div>
                     </div>
                 </div>
                 <div className="fullitem-preview">
@@ -88,7 +87,7 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                     {results}
                 </div>
             </div> */}
-        </React.Fragment>
+        </React.Fragment >
     );
 };
 

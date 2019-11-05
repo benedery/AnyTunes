@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import { fetchUsers, deleteUser, getUserData } from '../store/actions/dataActions'
 import { connect } from "react-redux";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import { Link } from "react-router-dom";
 import './AdminPanel.css'
 
 const useStyles = makeStyles(theme => ({
@@ -58,8 +57,7 @@ const AdminPanel = ({ fetchAllUsers, rows, handleDelete, getData }) => {
                     {rows.map(row => (
                         <TableRow key={row._id}>
                             <TableCell component="th" scope="row">
-                                {/* <Link to={`admin/${row._id}`} onClick={() => getData(row._id)} className="link-username">{row.username} </Link> */}
-                                <a onClick={() => getData(row._id)} className="link-username">{row.username} </a>
+                                <p onClick={() => getData(row._id)} className="link-username">{row.username} </p>
                             </TableCell>
                             <TableCell align="right" onClick={() => handleDelete(row._id)}><button className="delete-btn"><DeleteForeverIcon></DeleteForeverIcon></button></TableCell>
                         </TableRow>
