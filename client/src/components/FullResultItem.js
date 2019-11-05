@@ -7,6 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import { connect } from "react-redux";
 import { goBackFromItem } from '../store/actions/dataActions'
 import ResultItem from "./ResultItem";
+import Axios from "axios";
+const FileDownload = require('js-file-download');
+
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -37,6 +40,21 @@ const FullResultItem = ({ match, goBack, tracks }) => {
             .catch(err => console.log(err));
     }, [trackId]);
 
+    const handleDownload = (url) => {
+        return Axios.get(url, {
+            responseType: 'blob'
+        })
+            .then((response) => {
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', `${trackData.trackName}.m4a`);
+                document.body.appendChild(link);
+                link.click();
+            })
+    }
+
+
     return (
         <React.Fragment>
             <div className="fullitem-container">
@@ -59,6 +77,10 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                 <div className="fullitem-preview">
                     <ReactPlayer url={trackData.previewUrl} playing controls={true} width={350} height={100} />
                 </div>
+            </div>
+            <div className="downloads-container">
+                <button onClick={() => handleDownload(trackData.previewUrl)} className="btn-download">
+                    Download Ringtone</button>
             </div>
             {/* <div>
                 <h3>More Related Tracks</h3>

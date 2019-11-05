@@ -29,3 +29,17 @@
     margin-top: 20px;
     padding: 10px 120px;
 }
+
+.downloads-container {
+    margin-top: 40px;
+}
+
+.btn-download {
+    padding: 20px;
+    background: linear-gradient(-30deg, #d754ad 0%, #d754ad 10%, #f96785 62%, #fe7333 100%);
+    color: white;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+}

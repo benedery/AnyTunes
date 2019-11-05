@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { fetchQueries } from '../store/actions/authActions'
 import { connect } from "react-redux";
+import './TopTen.css'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -55,9 +56,10 @@ const TopTen = ({ fetchTopTen, rows }) => {
                     {rows.map(row => (
                         <TableRow key={row.name}>
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                <p className="searchterm-name">{row.name}</p>
                             </TableCell>
-                            <TableCell align="right">{row.timeSearched}</TableCell>
+                            <TableCell align="right">
+                                <p className="searchterm-time">{row.timeSearched}</p></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
