@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { goBackFromItem } from '../store/actions/dataActions'
 import ResultItem from "./ResultItem";
 import Axios from "axios";
+import Tilt from 'react-tilt';
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -55,29 +56,37 @@ const FullResultItem = ({ match, goBack, tracks }) => {
 
     return (
         <React.Fragment>
-            <div className="fullitem-container">
-                <IconButton className={classes.button} onClick={goBack}>
-                    <ArrowBackIcon /> <span> Go Back</span>
-                </IconButton>
-                <div className="fullitem-details-container">
-                    <div className="fullitem-details-info-left">
-                        <h1 style={{ fontWeight: "800" }}>{trackData.trackName}</h1>
-                        <h3> {trackData.artistName}</h3>
-                        <p>Release Date : {trackData.releaseDate}</p>
-                        <p>Genre : {trackData.primaryGenreName}</p>
-                        <p>Collection : {trackData.collectionName}</p>
-                        <p>Country : {trackData.country}</p>
-                    </div>
-                    <div className="fullitem-details-info-right">
-                        <img src={trackData.artworkUrl100} alt="img-poster" />
-                        <div className="fullitem-details-artist-right">{trackData.artistName}</div>
-                        <div className="fullitem-preview">
-                            <ReactPlayer url={trackData.previewUrl} playing controls={true} width={130} height={50} />
+            <Tilt className="Tilt" options={{ max: 25 }}  >
+                <div className="Tilt-inner">
+                    <div className="fullitem-container">
+                        <IconButton className={classes.button} onClick={goBack}>
+                            <ArrowBackIcon /> <span> Go Back</span>
+                        </IconButton>
+
+                        <div className="fullitem-details-container">
+                            <div className="fullitem-details-info-left">
+                                <h1 style={{ fontWeight: "800" }}>{trackData.trackName}</h1>
+                                <h3> {trackData.artistName}</h3>
+                                <p>Release Date : {trackData.releaseDate}</p>
+                                <p>Genre : {trackData.primaryGenreName}</p>
+                                <p>Collection : {trackData.collectionName}</p>
+                                <p>Country : {trackData.country}</p>
+                            </div>
+                            <div className="fullitem-details-info-right">
+                                <img src={trackData.artworkUrl100} alt="img-poster" />
+                                <div className="fullitem-details-artist-right">{trackData.artistName}</div>
+                                <div className="fullitem-preview">
+                                    <ReactPlayer url={trackData.previewUrl} playing controls={true} width={130} height={50} />
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
-            </div>
+
+            </Tilt>
+
             <div className="downloads-container">
                 <button onClick={() => handleDownload(trackData.previewUrl)} className="btn-download">
                     Download Ringtone</button>
