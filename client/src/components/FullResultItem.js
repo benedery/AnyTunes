@@ -4,10 +4,12 @@ import './FullResultItem.css'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { goBackFromItem } from '../store/actions/dataActions'
 import Axios from "axios";
 import Tilt from 'react-tilt';
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { FETCHING_STARTED, FETCHING_FINISH } from "../store/actions/types";
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -18,8 +20,10 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const FullResultItem = ({ match, goBack, tracks }) => {
+const FullResultItem = ({ match, goBack }) => {
     const classes = useStyles();
+    const dispatch = useDispatch()
+    const isLoading = useSelector(state => state.data.isFetching)
     const trackId = match.params.id;
     const [trackData, setTrackData] = useState({});
 
@@ -31,13 +35,15 @@ const FullResultItem = ({ match, goBack, tracks }) => {
     // );
 
     useEffect(() => {
+        dispatch({ type: FETCHING_STARTED })
         fetch(`https://itunes.apple.com/search?term=${trackId}`)
             .then(res => res.json())
             .then(apiData => {
                 setTrackData(apiData.results[0])
+                dispatch({ type: FETCHING_FINISH })
             })
             .catch(err => console.log(err));
-    }, [trackId]);
+    }, [trackId, dispatch]);
 
     const handleDownload = (url) => {
         return Axios.get(url, {
@@ -52,17 +58,17 @@ const FullResultItem = ({ match, goBack, tracks }) => {
                 link.click();
             })
     }
-
+    if (isLoading) return <CircularProgress className="loading-circle" />
 
     return (
         <React.Fragment>
             <Tilt className="Tilt" options={{ max: 25 }}  >
                 <div className="Tilt-inner">
                     <div className="fullitem-container">
-                        <IconButton className={classes.button} onClick={goBack}>
+                        <IconButton className={classes.button}
+                            onClick={() => dispatch(goBackFromItem())}>
                             <ArrowBackIcon /> <span> Go Back</span>
                         </IconButton>
-
                         <div className="fullitem-details-container">
                             <div className="fullitem-details-info-left">
                                 <h1 style={{ fontWeight: "800" }}>{trackData.trackName}</h1>
@@ -83,10 +89,7 @@ const FullResultItem = ({ match, goBack, tracks }) => {
 
                     </div>
                 </div>
-
-
             </Tilt>
-
             <div className="downloads-container">
                 <button onClick={() => handleDownload(trackData.previewUrl)} className="btn-download">
                     Download Ringtone</button>
@@ -101,15 +104,16 @@ const FullResultItem = ({ match, goBack, tracks }) => {
     );
 };
 
-const mapStateToProps = (state) => {
-    return {
-        tracks: state.data.resultsData
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        goBack: () => dispatch(goBackFromItem())
-    }
-}
+export default FullResultItem;
 
-export default connect(mapStateToProps, mapDispatchToProps)(FullResultItem);
+// const mapStateToProps = (state) => {
+//     return {
+//         tracks: state.data.resultsData
+//     }
+// }
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         goBack: () => dispatch(goBackFromItem())
+//     }
+// }
+// connect(mapStateToProps, mapDispatchToProps)(FullResultItem)

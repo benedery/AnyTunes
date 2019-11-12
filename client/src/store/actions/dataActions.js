@@ -29,16 +29,14 @@ export const searchResult = (searchInput) => {
 
 
 // export const fetchFullResultData = (trackId) => {
-//     return (dispatch) => {
-//         dispatch({ type: FETCHING_STARTED })
-//         return fetch(`https://itunes.apple.com/search?term=${trackId}`)
-//             .then(res => res.json())
-//             .then(apiData => {
-//                 setTrackData(apiData.results[0])
-//                 dispatch({ type: FETCHING_FINISH })
-//             })
-//             .catch(err => console.log(err));
-//     }
+//     dispatch({ type: FETCHING_STARTED })
+//     fetch(`https://itunes.apple.com/search?term=${trackId}`)
+//         .then(res => res.json())
+//         .then(apiData => {
+//             setTrackData(apiData.results[0])
+//             dispatch({ type: FETCHING_FINISH })
+//         })
+//         .catch(err => console.log(err));
 // }
 
 
@@ -51,6 +49,7 @@ export const fetchingSearchTerm = (SearchTerm) => {
                 dispatch({ type: FETCHING_STARTED });
                 dispatch({ type: UPDATE_RESULTS_DATA, payload: apiData.results })
                 updateQuery(dispatch, getState, SearchTerm)
+                dispatch({ type: FETCHING_FINISH })
             })
             .catch(err => console.log(err));
     }
