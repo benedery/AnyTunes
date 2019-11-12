@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import { connect } from "react-redux";
 import { goBackFromItem } from '../store/actions/dataActions'
-import ResultItem from "./ResultItem";
 import Axios from "axios";
 import Tilt from 'react-tilt';
 
@@ -23,12 +22,13 @@ const FullResultItem = ({ match, goBack, tracks }) => {
     const classes = useStyles();
     const trackId = match.params.id;
     const [trackData, setTrackData] = useState({});
-    const results = tracks.map((result) => {
-        if (result.trackId !== Number(trackId)) {
-            return <ResultItem key={result.trackId} item={result} />
-        }
-    }
-    );
+
+    // const results = tracks.map((result) => {
+    //     if (result.trackId !== Number(trackId)) {
+    //         return <ResultItem key={result.trackId} item={result} />
+    //     }
+    // }
+    // );
 
     useEffect(() => {
         fetch(`https://itunes.apple.com/search?term=${trackId}`)

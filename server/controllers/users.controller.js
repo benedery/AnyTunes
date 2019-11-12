@@ -99,7 +99,6 @@ exports.get_individualdata = (req, res) => {
             User.findOne({ _id: req.params.id })
                 .select('-password')
                 .then(users => {
-                    console.log(users)
                     res.json(users)
                 });
         }

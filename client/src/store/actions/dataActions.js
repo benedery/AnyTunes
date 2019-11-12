@@ -27,6 +27,21 @@ export const searchResult = (searchInput) => {
     };
 };
 
+
+// export const fetchFullResultData = (trackId) => {
+//     return (dispatch) => {
+//         dispatch({ type: FETCHING_STARTED })
+//         return fetch(`https://itunes.apple.com/search?term=${trackId}`)
+//             .then(res => res.json())
+//             .then(apiData => {
+//                 setTrackData(apiData.results[0])
+//                 dispatch({ type: FETCHING_FINISH })
+//             })
+//             .catch(err => console.log(err));
+//     }
+// }
+
+
 export const fetchingSearchTerm = (SearchTerm) => {
     return (dispatch, getState) => {
         return fetch(
